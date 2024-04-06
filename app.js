@@ -13,11 +13,6 @@ class VISSZASZAMLALO {
     }
 
 
-    ProgressBarWidthSzamitas() {
-        this.idoMasodpercben = this.oraKiir * 3600 + this.percKiir * 60 + this.masodpercKiir;
-    }
-
-
     Beolvasas() {
         let ora = Number(document.querySelector("#ora").value);
         let perc = Number(document.querySelector("#perc").value);
@@ -25,6 +20,8 @@ class VISSZASZAMLALO {
 
         return { "ora": ora, "perc": perc, "masodperc": masodperc };
     }
+
+
 
 
     //Képernyő tartalmáért felelős metódusok
@@ -52,6 +49,8 @@ class VISSZASZAMLALO {
             visszaszamlalo.classList.remove("d-flex");
         }
     }
+
+
 
 
     //Validálás beállítása
@@ -94,6 +93,8 @@ class VISSZASZAMLALO {
             this.HibaUzenetKapcsolo(true);
         }
     }
+
+
 
 
     //Visszaszámláló metódusok
@@ -171,7 +172,31 @@ class VISSZASZAMLALO {
     }
 
 
+    Szamlalo() {
+
+        this.HatterSzinBeallitas(this.HatterSzinGeneralas());
+
+        this.SzinekManipulalasa();
+
+        this.IdoManipulalasa();
+
+        this.IdoKiiratas();
+
+        this.ProgressBarManipulalas();
+
+        this.VisszaSzamlalasLeallitasa();
+
+    }
+
+
+
+
     //ProgressBar manipulálás
+    ProgressBarWidthSzamitas() {
+        this.idoMasodpercben = this.oraKiir * 3600 + this.percKiir * 60 + this.masodpercKiir;
+    }
+
+
     ProgressBarHatterManipulalas(progressBar) {
         if (this.aktualisSzazalek < 50) {
             progressBar.style.backgroundColor = "yellow";
@@ -195,21 +220,6 @@ class VISSZASZAMLALO {
     }
 
 
-    Szamlalo() {
-
-        this.HatterSzinBeallitas(this.HatterSzinGeneralas());
-
-        this.SzinekManipulalasa();
-
-        this.IdoManipulalasa();
-
-        this.IdoKiiratas();
-
-        this.ProgressBarManipulalas();
-
-        this.VisszaSzamlalasLeallitasa();
-
-    }
 
 
     //Visszaszámlálás elindítása
@@ -221,6 +231,8 @@ class VISSZASZAMLALO {
             }, 1000);
         }
     }
+
+
 
 
     //Kiíratások
@@ -241,6 +253,8 @@ class VISSZASZAMLALO {
 
         uzenetKiir.innerHTML = uzenet;
     }
+
+
 
 
     //Szinezés beállítása
@@ -308,6 +322,8 @@ class VISSZASZAMLALO {
     }
 
 
+
+
     //Alkalmazás leállítása
     Befejez() {
         this.szamlaloEngedelyezese = false;
@@ -321,7 +337,11 @@ class VISSZASZAMLALO {
     }
 }
 
+
+
+
 let visszaszamlalo = new VISSZASZAMLALO();
+
 
 let inditoGomb = document.querySelector("#indit");
 inditoGomb.addEventListener("click", function () {
